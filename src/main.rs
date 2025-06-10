@@ -52,6 +52,8 @@ fn try_send_notification(config_path: &str) -> bool {
         .and_then(|s| s.get("sound_file"))
         .unwrap_or("/usr/share/sounds/freedesktop/stereo/complete.oga");
 
+    println!("Sending notification, summary: {}, body: {}, sound_file: {}", summary, body, sound_file);
+
     // Send notification
     Notification::new()
         .summary(summary)
@@ -67,6 +69,8 @@ fn try_send_notification(config_path: &str) -> bool {
 
     // Delete the configuration file
     fs::remove_file(&config_path).expect("Failed to delete config file");
+
+    println!("Notification sent and sound played, removing config file: {}", config_path);
 
     return true;
 }
@@ -84,6 +88,10 @@ fn main() {
             .add_option(&["-d", "--duration"], Store, "Timing duration (seconds)");
         ap.parse_args_or_exit();
     }
+
+    // Print config_path and duration
+    println!("Config Path: {}", config_path);
+    println!("Duration: {} seconds", duration);
 
     loop {
         try_send_notification(&config_path);
