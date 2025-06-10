@@ -1,0 +1,9 @@
+[package]
+name = "Notifier"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+notify-rust = "4.0"
+rust-ini = "0.21.1"
+argparse = "0.2"
