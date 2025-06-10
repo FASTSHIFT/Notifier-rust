@@ -3,7 +3,7 @@ Custom notification tool based on rust
 
 ## Clone the repository
 ```
-git clone https://github.com/josephsurin/Notifier-rust.git
+https://github.com/FASTSHIFT/Notifier-rust.git
 ```
 
 ## Build the project
